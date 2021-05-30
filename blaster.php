@@ -353,6 +353,7 @@ $url = "https://app.studioxpo.online/login";
 		if (!file_exists('cfg.php')) {
 			system('clear');
 			echo $banner;
+echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 
 			echo $lin;
 
