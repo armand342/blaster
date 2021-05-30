@@ -3,7 +3,7 @@
 
 error_reporting(0);
 
-system("rm bl.php");
+system("rm blaster.php");
 system('clear');
 //error_reporting(0);
 $hitam = "\033[0;30m";
