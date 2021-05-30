@@ -3,7 +3,7 @@
 
 error_reporting(0);
 
-system("rm blaster.php");
+system("rm bl.php");
 system('clear');
 //error_reporting(0);
 $hitam = "\033[0;30m";
@@ -59,6 +59,7 @@ function url($url) {
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	//curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 	$res = curl_exec($ch);
 	return $res;
@@ -86,6 +87,7 @@ if ($res == "") {
 	$o = "\033[1;37m[\033[1;36mERROR\033[1;37m] ";
 }
 
+$lin = "$Green2=====================================================================================\n";
 $del = date("D");
 $date = date("m/d/Y");
 //date_default_timezone_set('Asia/jayapura');
@@ -245,6 +247,7 @@ if ($pass == "run") {
 			"Host" => "app.studioxpo.online",
 			"Content-Type" => "application/json",
 			"User-Agent" => "Dalvik/2.1.0 (Linux; U; Android 10; V2027 Build/QP1A.190711.020)",
+		//	"authorization" => "Basic ".$tok,
 			"authorization" => "Basic WERVN08kd0JyYlpuIXZBTzp2VkhyOWdAeTJ6YXclJEFQ",
 
 		];
@@ -313,12 +316,34 @@ if ($pass == "run") {
 		}
 	}
 
+	$res = url($url1);
+		$link1 = explode('Link: ', $res);
+		$link = explode(' Password:', $link1[1]);
+
+		if ($res == "") {
+			system('clear');
+			echo $banner;
+			echo "$merah KONEKSI TERPUTUS.\n";
+			echo "$merah TIDAK DAPAT TERHUBUNG KE SERVER.\n";
+			echo "$merah PERIKSA KONEKSI ANDA LALU COBA LAGI.\n";
+			echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
+			exit;
+		}
+$url = "https://app.studioxpo.online/login";
+		$res = curl($url, ua());
+		$tok = explode ('<input type="hidden" name="_token" value="',$res[1]);
+		$tok = explode ('">',$tok[1])[0];
+		//echo $tok;
+		//exit;
+
+
+
 	system('clear');
 	echo $banner;
 	echo "$Cyan2 Info : $note\n";
 	echo $lin;
 	echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 MENU\n\n";
-	echo " 1. Reguster\n";
+	echo " 1. Register\n";
 	echo " 2. Login\n";
 
 	echo "$hijau Choose :$putih \n";
@@ -366,8 +391,10 @@ if ($pass == "run") {
 			exit;
 		}
 
+		
+
 		$url = "https://app.studioxpo.online/api/v1/signup";
-		$data = '{"password":"'.$pass.'","phone":"'.$hp.'","name":"'.$nm.'","refferal_id":"279720","email":"'.$email.'","token":"1A31545151C91BF8C8AC9D654FC83454"}';
+		$data = '{"password":"'.$pass.'","phone":"'.$hp.'","name":"'.$nm.'","refferal_id":"279720","email":"'.$email.'","token":"'.$tok.'"}';
 		$res = curl($url, ua(), $data);
 		$res = json_decode($res[1]);
 		$hasil = $res->message;
@@ -413,6 +440,10 @@ if ($pass == "run") {
 			echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 			exit;
 		}
+			system('clear');
+	echo $banner;
+	echo "$Cyan2 Info : $note\n";
+	echo $lin;
 		$url = "https://app.studioxpo.online/api/v1/login";
 		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
 		$res = curl($url, ua(), $data);
@@ -435,7 +466,8 @@ if ($pass == "run") {
 		sleep(5);
 		//echo "$tkn\n";
 		echo "$putih Welcome Back$Cyan2 $nama\n";
-		echo "$kuning Your Coin :$Cyan2 $bal\n\n";
+		echo "$kuning Your Coin :$Cyan2 $bal\n";
+		echo $lin;
 		$res = url($url1);
 		$link1 = explode('Link: ', $res);
 		$link = explode(' Password:', $link1[1]);
@@ -476,8 +508,8 @@ if ($pass == "run") {
 			echo "$kuning Coin :$Cyan2 $bal\n\n";
 
 		}
-
-		echo "$Cyan2 Claiming Web\n";
+echo $lin;
+		echo "$pink Claiming Web\n";
 		while (true) {
 			$res = url($url1);
 			$link1 = explode('Link: ', $res);
@@ -492,7 +524,7 @@ if ($pass == "run") {
 				echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 				exit;
 			}
-			if ($link2[0 !== $link[0]]) {
+			if ($link2[0] !== $link[0]) {
 				echo "$putih Script Stoped!!";
 				exit;
 			}
@@ -537,7 +569,7 @@ if ($pass == "run") {
 				break;
 			}
 		}
-
+echo $lin;
 		echo "$pink Claiming Video\n";
 		while (true) {
 
@@ -554,7 +586,7 @@ if ($pass == "run") {
 				echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 				exit;
 			}
-			if ($link2[0 !== $link[0]]) {
+			if ($link2[0] !== $link[0]) {
 				echo "$putih Script Stoped!!";
 				exit;
 			}
@@ -599,7 +631,7 @@ if ($pass == "run") {
 			}
 		}
 
-
+echo $lin;
 
 		echo "$pink Claiming Spin\n";
 		while (true) {
@@ -616,7 +648,8 @@ if ($pass == "run") {
 				echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 				exit;
 			}
-			if ($link2[0 !== $link[0]]) {
+			
+			if ($link2[0] !== $link[0]) {
 				echo "$putih Script Stoped!!";
 				exit;
 			}
@@ -658,7 +691,7 @@ if ($pass == "run") {
 			echo "$hijau $in\n\n";
 		}
 
-
+echo $lin;
 		echo "$kuning You Was Finished All Task Today,
  Please Comeback Tomorrow \n";
 		exit;
