@@ -693,7 +693,8 @@ echo $lin;
 		}
 
 echo $lin;
-echo "$kuning Auto withdraw will automaticly starting if you coin was 1000\n";
+echo "$kuning Auto withdraw will automaticly starting if 
+ your coin was 1000\n\n";
 		echo "$kuning You Was Finished All Task Today,
  Please Comeback Tomorrow \n";
 		exit;
