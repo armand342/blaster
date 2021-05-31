@@ -708,6 +708,18 @@ include 'cfg.php';
 $url = "https://app.studioxpo.online/api/v1/login";
 		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
 		$res = curl($url, ua(), $data);
+$url = "https://app.studioxpo.online/api/v1/spin";
+		$res = curl($url, get($tkn));
+		$res = json_decode($res[1]);
+
+
+		$url = "https://app.studioxpo.online/api/v1/check";
+		$data = '{"package":"com.studioxpoinc.cryptoblaster"}';
+		$res = curl($url, post($tkn), $data);
+		$res = json_decode($res[1]);
+
+
+
 		$res = json_decode($res[1]);
 		$cek = $res->message;
 		$tkn = $res->token;
