@@ -722,6 +722,13 @@ $url = "https://app.studioxpo.online/api/v1/spin";
 		$res = curl($url, post($tkn), $data);
 		$res = json_decode($res[1]);
 
+$url = "https://app.studioxpo.online/api/v1/user_coin/$cid";
+			$res = curl($url, get($tkn));
+			$res = json_decode($res[1]);
+			$bal = $res->message;
+			echo "$kuning Coin :$Cyan2 $bal\n\n";
+
+
 		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
 		echo "$hijau Email Coinbase :$putih \n";
 		$emailwd = trim(fgets(STDIN));
