@@ -697,15 +697,19 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 
 	}
 	if ($p = 3) {
-$url = "https://app.studioxpo.online/api/v1/login";
-		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
-		$res = curl($url, ua(), $data);
+
+
 		system('clear');
 		echo $banner;
 		echo "$merah MAKE SURE YOU ENTERED COINBASE EMAIL\n\n";
 
 		echo $lin;
-
+$url = "https://app.studioxpo.online/api/v1/login";
+		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
+		$res = curl($url, ua(), $data);
+		$res = json_decode($res[1]);
+		$cek = $res->message;
+		$tkn = $res->token;
 		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
 		echo "$hijau Email Coinbase :$putih \n";
 		$emailwd = trim(fgets(STDIN));
