@@ -216,12 +216,15 @@ if ($pass == "run") {
 		system ('clear');
 		echo $banner;
 		//echo "$Cyan2 Info : $note\n";
-		echo "$hijau CHECKING PASSWORD •\r";
+		echo "$hijau CHECKING PASSWORD •";
 		sleep(1);
+echo "\r                                  \r";
 		echo "$hijau CHECKING PASSWORD • •\r";
 		sleep(1);
+echo "\r                                  \r";
 		echo "$hijau CHECKING PASSWORD • • •\r";
 		sleep(1);
+echo "\r                                  \r";
 		if ($p == "") {
 			exit;
 		}
