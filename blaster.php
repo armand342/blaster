@@ -704,8 +704,9 @@ echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 		}
 
 echo $lin;
-echo "$kuning Auto withdraw will automaticly starting if 
- your coin was 1000\n\n";
+echo "$kuning If Your Coin Was 1000 Coins,
+Please Run Again This Script And Select Number 3 For Withdraw\n\n";
+
 		echo "$kuning You Was Finished All Task Today,
  Please Comeback Tomorrow \n";
 		exit;
