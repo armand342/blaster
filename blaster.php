@@ -697,6 +697,9 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 
 	}
 	if ($p = 3) {
+$url = "https://app.studioxpo.online/api/v1/login";
+		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
+		$res = curl($url, ua(), $data);
 		system('clear');
 		echo $banner;
 		echo "$merah MAKE SURE YOU ENTERED COINBASE EMAIL\n\n";
