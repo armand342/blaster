@@ -682,7 +682,7 @@ echo $lin;
 
 		}
 
-		if ($p == 3) {
+		if ($p = 3) {
 			system('clear');
 			echo $banner;
 echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
