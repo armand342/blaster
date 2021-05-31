@@ -247,7 +247,7 @@ if ($pass == "run") {
 			"Host" => "app.studioxpo.online",
 			"Content-Type" => "application/json",
 			"User-Agent" => "Dalvik/2.1.0 (Linux; U; Android 10; V2027 Build/QP1A.190711.020)",
-		//	"authorization" => "Basic ".$tok,
+			//	"authorization" => "Basic ".$tok,
 			"authorization" => "Basic WERVN08kd0JyYlpuIXZBTzp2VkhyOWdAeTJ6YXclJEFQ",
 
 		];
@@ -317,24 +317,24 @@ if ($pass == "run") {
 	}
 
 	$res = url($url1);
-		$link1 = explode('Link: ', $res);
-		$link = explode(' Password:', $link1[1]);
+	$link1 = explode('Link: ', $res);
+	$link = explode(' Password:', $link1[1]);
 
-		if ($res == "") {
-			system('clear');
-			echo $banner;
-			echo "$merah KONEKSI TERPUTUS.\n";
-			echo "$merah TIDAK DAPAT TERHUBUNG KE SERVER.\n";
-			echo "$merah PERIKSA KONEKSI ANDA LALU COBA LAGI.\n";
-			echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
-			exit;
-		}
-$url = "https://app.studioxpo.online/login";
-		$res = curl($url, ua());
-		$tok = explode ('<input type="hidden" name="_token" value="',$res[1]);
-		$tok = explode ('">',$tok[1])[0];
-		//echo $tok;
-		//exit;
+	if ($res == "") {
+		system('clear');
+		echo $banner;
+		echo "$merah KONEKSI TERPUTUS.\n";
+		echo "$merah TIDAK DAPAT TERHUBUNG KE SERVER.\n";
+		echo "$merah PERIKSA KONEKSI ANDA LALU COBA LAGI.\n";
+		echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
+		exit;
+	}
+	$url = "https://app.studioxpo.online/login";
+	$res = curl($url, ua());
+	$tok = explode ('<input type="hidden" name="_token" value="', $res[1]);
+	$tok = explode ('">', $tok[1])[0];
+	//echo $tok;
+	//exit;
 
 
 
@@ -345,8 +345,8 @@ $url = "https://app.studioxpo.online/login";
 	echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 MENU\n\n";
 	echo " 1. Register\n";
 	echo " 2. Login\n";
-echo " 3. Withdraw\n";
-	
+	echo " 3. Withdraw\n";
+
 
 	echo "$hijau Choose :$putih \n";
 	$p = trim(fgets(STDIN));
@@ -355,7 +355,7 @@ echo " 3. Withdraw\n";
 		if (!file_exists('cfg.php')) {
 			system('clear');
 			echo $banner;
-echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
+			echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 
 			echo $lin;
 
@@ -394,7 +394,7 @@ echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 			exit;
 		}
 
-		
+
 
 		$url = "https://app.studioxpo.online/api/v1/signup";
 		$data = '{"password":"'.$pass.'","phone":"'.$hp.'","name":"'.$nm.'","refferal_id":"279720","email":"'.$email.'","token":"'.$tok.'"}';
@@ -443,10 +443,10 @@ echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 			echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 			exit;
 		}
-			system('clear');
-	echo $banner;
-	echo "$Cyan2 Info : $note\n";
-	echo $lin;
+		system('clear');
+		echo $banner;
+		echo "$Cyan2 Info : $note\n";
+		echo $lin;
 		$url = "https://app.studioxpo.online/api/v1/login";
 		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
 		$res = curl($url, ua(), $data);
@@ -511,7 +511,7 @@ echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 			echo "$kuning Coin :$Cyan2 $bal\n\n";
 
 		}
-echo $lin;
+		echo $lin;
 		echo "$pink Claiming Web\n";
 		while (true) {
 			$res = url($url1);
@@ -572,7 +572,7 @@ echo $lin;
 				break;
 			}
 		}
-echo $lin;
+		echo $lin;
 		echo "$pink Claiming Video\n";
 		while (true) {
 
@@ -634,7 +634,7 @@ echo $lin;
 			}
 		}
 
-echo $lin;
+		echo $lin;
 
 		echo "$pink Claiming Spin\n";
 		while (true) {
@@ -651,7 +651,7 @@ echo $lin;
 				echo "$merah PASTIKAN UNTUK TIDAK MENGGUNAKAN VPN.\n";
 				exit;
 			}
-			
+
 			if ($link2[0] !== $link[0]) {
 				echo "$putih Script Stoped!!";
 				exit;
@@ -682,34 +682,35 @@ echo $lin;
 
 		}
 
-		if ($p = 3) {
-			system('clear');
-			echo $banner;
-echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
 
-			echo $lin;
 
-			echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
-			echo "$hijau Email Coinbase :$putih \n";
-			$emailwd = trim(fgets(STDIN));
-			echo " $Cyan2 STARTING WITHDRAW\n\n";
-			$url = "https://app.studioxpo.online/api/v1/rewards";
-			$res = curl($url, get($tkn));
-			$url = "https://app.studioxpo.online/api/v1/reward-request";
-			$data = '{"amount":"1000","orginal_amount":"0.000010 ETH","user_id":"'.$cid.'","mobile":"'.$emailwd.'","detail":"1000 Coin","type":"Ethereum"}';
-			$res = curl($url, ua(), $data);
-			$res = json_decode($res[1]);
-			$in = $res->data;
-			echo "$hijau $in\n\n";
-		}
-
-echo $lin;
-echo "$kuning If Your Coin Was 1000 Coins,
+		echo $lin;
+		echo "$kuning If Your Coin Was 1000 Coins,
 Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 
 		echo "$kuning You Was Finished All Task Today,
  Please Comeback Tomorrow \n";
 		exit;
 
+	}
+	if ($p = 3) {
+		system('clear');
+		echo $banner;
+		echo "$merah MAKE SURE YOU ENTERED COINBASE EMAIL\n\n";
+
+		echo $lin;
+
+		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
+		echo "$hijau Email Coinbase :$putih \n";
+		$emailwd = trim(fgets(STDIN));
+		echo " $Cyan2 STARTING WITHDRAW\n\n";
+		$url = "https://app.studioxpo.online/api/v1/rewards";
+		$res = curl($url, get($tkn));
+		$url = "https://app.studioxpo.online/api/v1/reward-request";
+		$data = '{"amount":"1000","orginal_amount":"0.000010 ETH","user_id":"'.$cid.'","mobile":"'.$emailwd.'","detail":"1000 Coin","type":"Ethereum"}';
+		$res = curl($url, ua(), $data);
+		$res = json_decode($res[1]);
+		$in = $res->data;
+		echo "$hijau $in\n\n";
 	}
 }
