@@ -711,6 +711,7 @@ $url = "https://app.studioxpo.online/api/v1/login";
 $res = json_decode($res[1]);
 		$cek = $res->message;
 		$tkn = $res->token;
+$cid = $res->user->cust_id;
 
 $url = "https://app.studioxpo.online/api/v1/spin";
 		$res = curl($url, get($tkn));
