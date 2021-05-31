@@ -704,6 +704,10 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 		echo "$merah MAKE SURE YOU ENTERED COINBASE EMAIL\n\n";
 
 		echo $lin;
+if(!file_exists('cfg.php){
+echo "$merah You need to login first\n";
+exit;
+}
 include 'cfg.php';
 $url = "https://app.studioxpo.online/api/v1/login";
 		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
@@ -727,12 +731,18 @@ $url = "https://app.studioxpo.online/api/v1/user_coin/$cid";
 			$res = curl($url, get($tkn));
 			$res = json_decode($res[1]);
 			$bal = $res->message;
-			echo "$kuning Coin :$Cyan2 $bal\n\n";
-
+			
 
 		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
+echo "$kuning Coin :$Cyan2 $bal\n\n";
+
 		echo "$hijau Email Coinbase :$putih \n";
 		$emailwd = trim(fgets(STDIN));
+system('clear');
+		echo $banner;
+
+
+		echo $lin;
 		echo " $Cyan2 STARTING WITHDRAW\n\n";
 		$url = "https://app.studioxpo.online/api/v1/rewards";
 		$res = curl($url, get($tkn));
