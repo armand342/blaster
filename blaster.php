@@ -345,6 +345,8 @@ $url = "https://app.studioxpo.online/login";
 	echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 MENU\n\n";
 	echo " 1. Register\n";
 	echo " 2. Login\n";
+echo " 3. Withdraw\n";
+	
 
 	echo "$hijau Choose :$putih \n";
 	$p = trim(fgets(STDIN));
@@ -680,12 +682,21 @@ echo $lin;
 
 		}
 
-		if ($bal >= 1000) {
-			echo " $Cyan2 STARTING AUTO WITHDRAW\n\n";
+		if ($p == 3) {
+			system('clear');
+			echo $banner;
+echo "$merah MAKE SURE YOU REGISTER WITH COINBASE EMAIL\n\n";
+
+			echo $lin;
+
+			echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
+			echo "$hijau Email Coinbase :$putih \n";
+			$emailwd = trim(fgets(STDIN));
+			echo " $Cyan2 STARTING WITHDRAW\n\n";
 			$url = "https://app.studioxpo.online/api/v1/rewards";
 			$res = curl($url, get($tkn));
 			$url = "https://app.studioxpo.online/api/v1/reward-request";
-			$data = '{"amount":"1000","orginal_amount":"0.000010 ETH","user_id":"'.$cid.'","mobile":"'.$email.'","detail":"1000 Coin","type":"Ethereum"}';
+			$data = '{"amount":"1000","orginal_amount":"0.000010 ETH","user_id":"'.$cid.'","mobile":"'.$emailwd.'","detail":"1000 Coin","type":"Ethereum"}';
 			$res = curl($url, ua(), $data);
 			$res = json_decode($res[1]);
 			$in = $res->data;
