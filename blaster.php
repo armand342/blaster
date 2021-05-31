@@ -218,13 +218,13 @@ if ($pass == "run") {
 		//echo "$Cyan2 Info : $note\n";
 		echo "$hijau CHECKING PASSWORD •";
 		sleep(1);
-echo "\r                                  \r";
+		echo "\r                                  \r";
 		echo "$hijau CHECKING PASSWORD • •\r";
 		sleep(1);
-echo "\r                                  \r";
+		echo "\r                                  \r";
 		echo "$hijau CHECKING PASSWORD • • •\r";
 		sleep(1);
-echo "\r                                  \r";
+		echo "\r                                  \r";
 		if ($p == "") {
 			exit;
 		}
@@ -704,41 +704,44 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 		echo "$merah MAKE SURE YOU ENTERED COINBASE EMAIL\n\n";
 
 		echo $lin;
-if(!file_exists('cfg.php){
-echo "$merah You need to login first\n";
-exit;
-}
-include 'cfg.php';
-$url = "https://app.studioxpo.online/api/v1/login";
-		$data = '{"password":"'.$pass.'","email":"'.$email.'"}';
+		if (!file_exists('cfg.php')) {
+			echo "$merah You need to login first\n";
+			exit;
+		}
+		//include 'cfg.php';
+		$url = "https://app.studioxpo.online/api/v1/login";
+		$data = ' {
+			"password":"'.$pass.'", "email":"'.$email.'"
+		}';
 		$res = curl($url, ua(), $data);
-$res = json_decode($res[1]);
+		$res = json_decode($res[1]);
 		$cek = $res->message;
 		$tkn = $res->token;
-$cid = $res->user->cust_id;
+		$cid = $res->user->cust_id;
 
-$url = "https://app.studioxpo.online/api/v1/spin";
+		$url = "https://app.studioxpo.online/api/v1/spin";
 		$res = curl($url, get($tkn));
 		$res = json_decode($res[1]);
 
 
 		$url = "https://app.studioxpo.online/api/v1/check";
-		$data = '{"package":"com.studioxpoinc.cryptoblaster"}';
+		$data = ' {
+			"package":"com.studioxpoinc.cryptoblaster"
+		}';
 		$res = curl($url, post($tkn), $data);
 		$res = json_decode($res[1]);
 
-$url = "https://app.studioxpo.online/api/v1/user_coin/$cid";
-			$res = curl($url, get($tkn));
-			$res = json_decode($res[1]);
-			$bal = $res->message;
-			
+		$url = "https://app.studioxpo.online/api/v1/user_coin/$cid";
+		$res = curl($url, get($tkn));
+		$res = json_decode($res[1]);
+		$bal = $res->message;
 
 		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
-echo "$kuning Coin :$Cyan2 $bal\n\n";
+		echo "$kuning Coin :$Cyan2 $bal\n\n";
 
 		echo "$hijau Email Coinbase :$putih \n";
 		$emailwd = trim(fgets(STDIN));
-system('clear');
+		system('clear');
 		echo $banner;
 
 
@@ -747,7 +750,9 @@ system('clear');
 		$url = "https://app.studioxpo.online/api/v1/rewards";
 		$res = curl($url, get($tkn));
 		$url = "https://app.studioxpo.online/api/v1/reward-request";
-		$data = '{"amount":"1000","orginal_amount":"0.000010 ETH","user_id":"'.$cid.'","mobile":"'.$emailwd.'","detail":"1000 Coin","type":"Ethereum"}';
+		$data = ' {
+			"amount":"1000", "orginal_amount":"0.000010 ETH", "user_id":"'.$cid.'", "mobile":"'.$emailwd.'", "detail":"1000 Coin", "type":"Ethereum"
+		}';
 		$res = curl($url, ua(), $data);
 		$res = json_decode($res[1]);
 		$in = $res->data;
