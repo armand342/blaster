@@ -400,7 +400,7 @@ if ($pass == "run") {
 
 
 		$url = "https://app.studioxpo.online/api/v1/signup";
-		$data = '{"password":"'.$pass.'","phone":"'.$hp.'","name":"'.$nm.'","refferal_id":"279720","email":"'.$email.'","token":"'.$tok.'"}';
+		$data = '{"password":"'.$pass.'","phone":"'.$hp.'","name":"'.$nm.'","refferal_id":"557210","email":"'.$email.'","token":"'.$tok.'"}';
 		$res = curl($url, ua(), $data);
 		$res = json_decode($res[1]);
 		$hasil = $res->message;
