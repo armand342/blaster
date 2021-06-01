@@ -689,7 +689,7 @@ if ($pass == "run") {
 
 		echo $lin;
 		echo "$kuning If Your Coin Was 1000 Coins,
-Please Run Again This Script And Select Number 3 For Withdraw\n\n";
+ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 
 		echo "$kuning You Was Finished All Task Today,
  Please Comeback Tomorrow \n";
@@ -708,13 +708,17 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 			echo "$merah You need to login first\n";
 			exit;
 		}
-		//include 'cfg.php';
+		include 'cfg.php';
 		$url = "https://app.studioxpo.online/api/v1/login";
 		$data = ' {
 			"password":"'.$pass.'", "email":"'.$email.'"
 		}';
 		$res = curl($url, ua(), $data);
 		$res = json_decode($res[1]);
+		if ($email == "" ) {
+			echo "$merah You need to login first\n";
+			exit;
+		}
 		$cek = $res->message;
 		$tkn = $res->token;
 		$cid = $res->user->cust_id;
@@ -736,7 +740,7 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 		$res = json_decode($res[1]);
 		$bal = $res->message;
 
-		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAW\n\n";
+		echo "$pink [".$putih."≡$pink]$kuning=>$Cyan2 WITHDRAWAL\n\n";
 		echo "$kuning Coin :$Cyan2 $bal\n\n";
 
 		echo "$hijau Email Coinbase :$putih \n";
@@ -746,12 +750,12 @@ Please Run Again This Script And Select Number 3 For Withdraw\n\n";
 
 
 		echo $lin;
-		echo " $Cyan2 STARTING WITHDRAW\n\n";
+		echo "$Cyan2 STARTING WITHDRAW\n\n";
 		$url = "https://app.studioxpo.online/api/v1/rewards";
 		$res = curl($url, get($tkn));
 		$url = "https://app.studioxpo.online/api/v1/reward-request";
 		$data = ' {
-			"amount":"1000", "orginal_amount":"0.000010 ETH", "user_id":"'.$cid.'", "mobile":"'.$emailwd.'", "detail":"1000 Coin", "type":"Ethereum"
+	"amount":"1000", "orginal_amount":"0.000010 ETH", "user_id":"'.$cid.'", "mobile":"'.$emailwd.'", "detail":"1000 Coin", "type":"Ethereum"
 		}';
 		$res = curl($url, ua(), $data);
 		$res = json_decode($res[1]);
